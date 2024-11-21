@@ -1,0 +1,146 @@
+/* Container chính */
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các phần tử xuống dòng khi không đủ chỗ */
+    gap: 20px; /* Khoảng cách giữa các phần */
+    padding: 10px;
+    max-width: 100%; /* Giới hạn chiều rộng */
+    text-align: left;
+    margin-left: auto;
+    justify-content: center; /* Căn giữa các mục */
+    background-color: hsl(208, 7%, 46%);
+}
+
+/* Avatar */
+.avatar {
+    margin-bottom: 20px; /* Khoảng cách dưới avatar */
+    text-align: center; /* Căn giữa avatar */
+}
+
+.avatar-img {
+    width: 15vw; /* Kích thước linh hoạt theo chiều rộng màn hình */
+    max-width: 120px; /* Kích thước tối đa */
+    height: auto; /* Duy trì tỉ lệ hình ảnh */
+    border-radius: 10%; /* Bo góc */
+    object-fit: cover; /* Cắt ảnh phù hợp kích thước */
+    border: 4px solid #ffffff; /* Viền trắng */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ */
+    transition: all 0.3s ease-in-out; /* Hiệu ứng chuyển đổi khi thay đổi kích thước */
+}
+
+/* Hàng đầu tiên */
+.row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; /* Chia đều khoảng cách giữa các phần */
+    gap: 20px;
+}
+
+/* Các mục trong hàng đầu tiên */
+.user-info {
+    flex: 1; /* Chia không gian dựa trên flex */
+    max-width: calc(20% - 20px); /* Chiếm 20% chiều ngang */
+    background-color: #1d2731; /* Màu nền tối */
+    color: white;
+    padding: 10px;
+    border-radius: 8px; /* Bo tròn góc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+}
+
+.upload-container {
+    flex: 2; /* Chiếm nhiều không gian hơn */
+    max-width: calc(80% - 20px); /* Chiếm 80% chiều ngang */
+    display: flex;
+    flex-direction: column; /* Sắp xếp theo chiều dọc */
+    gap: 20px; /* Khoảng cách giữa các phần */
+}
+
+.upload-file,
+.uploaded-files {
+    background-color: #1d2731; /* Màu nền tối */
+    color: white;
+    padding: 10px;
+    border-radius: 8px; /* Bo tròn góc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    width: 100%;
+}
+
+/* Đổi màu nền cho từng phần */
+.upload-file {
+    background-color: #28a745; /* Màu nền xanh lá */
+}
+
+.uploaded-files {
+    background-color: #ffc107; /* Màu nền vàng */
+    color: black; /* Màu chữ đen */
+}
+
+/* Hàng chứa phần search-file */
+.search-file {
+    width: 100%; /* Chiếm toàn bộ chiều ngang */
+    background-color: #2f73ae; /* Màu nền xanh đậm */
+    color: white;
+    padding: 20px;
+    border-radius: 8px; /* Bo tròn góc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    margin-top: 20px; /* Khoảng cách với hàng trên */
+}
+
+/* Định dạng chung cho tiêu đề trong các phần */
+.user-info h3,
+.upload-file h3,
+.uploaded-files h3,
+.search-file h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    text-align: center; /* Căn giữa tiêu đề */
+}
+h1 {
+    font-size: 2rem; /* Kích thước linh hoạt theo chiều rộng màn hình */
+    text-align: center; /* Căn giữa tiêu đề */
+    margin-bottom: 20px;
+    color: #ffffff; /* Màu chữ trắng */
+}
+/* Responsive: Xử lý cho màn hình nhỏ hơn */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column; /* Xếp các mục theo chiều dọc */
+    }
+
+    .user-info,
+    .upload-container,
+    .search-file {
+        max-width: 100%; /* Chiếm toàn bộ chiều ngang */
+    }
+}
+@media (max-width: 768px) {
+    h1 {
+        font-size: 5vw; /* Tăng kích thước chữ linh hoạt cho màn hình nhỏ */
+    }
+
+    .avatar-img {
+        width: 25vw; /* Tăng kích thước avatar theo màn hình nhỏ hơn */
+        max-width: 80px; /* Giới hạn kích thước tối đa */
+    }
+}
+
+/* Đảm bảo các nút có cùng kích thước */
+.btn {
+    width: 150px; /* Đặt chiều rộng cố định cho các nút */
+    text-align: center; /* Căn giữa nội dung trong nút */
+    display: inline-block; /* Đảm bảo nút hiển thị trên cùng một dòng */
+    margin: 5px; /* Khoảng cách giữa các nút */
+    padding: 10px 10px; /* Khoảng cách bên trong nút */
+    font-size: 13px; /* Đảm bảo font-size phù hợp */
+}
+
+/* Nếu bạn muốn các nút nổi bật hơn */
+.convert-btn {
+    background-color: rgb(172, 19, 199);
+    border-radius: 5%;
+}
+
+.download-btn {
+    background-color: #511bd0; /* Màu xanh lá */
+    border-radius: 5%;
+}

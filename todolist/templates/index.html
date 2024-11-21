@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %} HomePage {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <!-- Phần avatar và thông tin người dùng -->
+    
+    <div class="user-info">
+        <h1 >Information</h1>
+        <div class="avatar">
+            <!-- Hiển thị avatar hoặc hình mặc định -->
+            <img src="{{ user_avatar_url or url_for('static', filename='doremon.png') }}" alt="Avatar" class="avatar-img">        
+        </div>
+        <p><strong>Full Name:</strong> {{ user_info.full_name }}</p> <!-- Lớp -->
+        <h3>{{ user[2] }}</h3> <!-- Tên người dùng -->
+        <p><strong>Email:</strong> {{ user_info.email }}</p> <!-- Email -->
+        <p><strong>Age:</strong> {{ user_info.age }}</p> <!-- Tuổi -->
+        <p><strong>Class:</strong> {{ user_info.c_class }}</p> <!-- Lớp -->
+        <p><strong>Phone:</strong> {{ user_info.phone }}</p> <!-- Lớp -->
+        <p><strong>Address:</strong> {{ user_info.address }}</p> <!-- Lớp -->
+        <p><strong>Gender:</strong> {{ user_info.gender }}</p> <!-- Lớp -->
+    </div>
+    <div class="upload-container">
+        <!-- Khu vực upload file -->
+        <div class="upload-file">
+            <h3>Upload Your File</h3>
+            <form id="uploadForm" method="POST" enctype="multipart/form-data" autocomplete="off" action="/home">
+                <div class="form-group">
+                    <input type="file" name="file" class="form-control" id="fileInput" required>
+                </div>
+                <button type="submit" class="btn btn-primary" id="uploadButton">Upload File</button>
+            </form>
+        </div>
+
+        <!-- File đã upload -->
+        <div class="uploaded-files">
+            <h3>Uploaded Files</h3>
+            {% if user_files %}
+            <ul>
+                {% for file in user_files %}
+                <li>
+                    <div class="file-container">
+                        <a href="{{ file.link }}" target="_blank">{{ file.filename }}</a> 
+                        (Type: {{ file.filetype }}) 
+                        
+                        {% if file.filetype == '.docx' %}
+                            {% if file.link_convert %}
+                            <a href="{{ url_for('views.download_file_pdf',file_id=file.file_id_convert,file_name=file.filename) }}"  class="btn btn-success download-btn">Download PDF</a>
+                               <a href="{{ file.link_convert }}" target="_blank" class="btn btn-warning convert-btn" >{{ file.filename }}</a> 
+                            <!-- Nút chuyển đổi file Word sang PDF -->
+                            {% else %}
+                             <a href="{{ url_for('views.convert_file',file_id=file.file_id,file_name=file.filename) }}" class="btn btn-warning convert-btn">Convert to PDF</a>
+                            {% endif %}
+                        {% elif file.filetype == '.pdf' %}
+                            <!-- Nút tải về file PDF -->
+                            <a href="{{ url_for('views.download_file_pdf',file_id=file.file_id,file_name=file.filename) }}"  class="btn btn-success download-btn">Download PDF</a>
+
+
+                        {% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No files uploaded yet.</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="search-file">
+        <h3>Search Files</h3>
+    <form method="POST">
+        <textarea name = "note" id = "note" class="form-control"></textarea>
+        <div>
+            <button style="margin-top: 10px;" type = "submit" class="btn btn-primary">
+                Search File
+            </button>
+        </div>
+    </form>
+    </div>
+</div>
+
+{% endblock %}

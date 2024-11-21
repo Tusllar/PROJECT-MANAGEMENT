@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %} User Information {% endblock %}
+
+{% block content %}
+<h2>Update Your Information</h2>
+<form method="POST">
+    <div class="form-group">
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" class="form-control" >
+    </div>
+    <div class="form-group">
+        <label for="class">Class:</label>
+        <input type="text" id="class" name="class" class="form-control" >
+    </div>
+    <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" class="form-control"  >
+    </div>
+    <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="address">Phone:</label>
+        <textarea id="phone" name="phone" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" class="form-control" >
+            <option value="" >Select Gender</option>
+            <option value="Male" >Male</option>
+            <option value="Female" >Female</option>
+            <option value="Other" >Other</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+{% endblock %}
