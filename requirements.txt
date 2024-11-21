@@ -1,0 +1,12 @@
+Flask==2.3.2
+flask_sqlalchemy==2.5
+flask_login==0.5.0
+werkzeug==2.3.0
+google-auth==2.16.0
+google-auth-oauthlib==0.4.6
+google-api-python-client==2.73.0
+python-dotenv==0.21.0
+mysql-connector-python==8.0.29
+pydrive2==1.8.0
+flask_wtf==1.0.0
+flask_mail==0.9.1
